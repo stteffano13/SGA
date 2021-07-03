@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Login V4</title>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+
+</head>
+
+
+<body style="height:100%;">
+
+  <div class="slider-wrap  position-absolute">
+    <div class="single-slide" id="slide-1"></div>
+    <div class="single-slide" id="slide-2"></div>
+    <div class="single-slide" id="slide-3"></div>
+    <div class="single-slide" id="slide-4"></div>
+    <div class="single-slide" id="slide-5"></div>
+
+  </div>
+
+
+  <div class=" container-login100 backInDown animated">
+
+    <div class=" shadow-lg   rounded mx-auto wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+      <div>
+        <h4 class="text-center font-weight-bold">BIENVENIDO A SGA EBENEZER</h4>
+      </div>
+      <br>
+      <form class=" login100-form  validate-form">
+
+
+
+        <div class="rubberBand  animated " id="divImagenLogo">
+          <img id="imagenLogo" src="./../assets/images/logo.png">
+        </div>
+        <span class="login100-form-title p-b-49 ">
+          Iniciar sesión
+        </span>
+
+
+        <div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
+          <span class="label-input100">Ingrese su correo </span>
+          <input #CorreoA="ngModel" [(ngModel)]="this.obj.Correo" class="input100" name="correoA"
+            placeholder="Correo electrónico" type="email">
+          <span class="focus-input100" data-symbol="&#xf007;"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Password is required">
+          <span class="label-input100">Ingrese contraseña</span>
+          <input #ContraseniaA="ngModel" [(ngModel)]="this.obj.Contrasenia" class="input100" name="contraseniaA"
+            placeholder="Contraseña" type="password">
+          <span class="focus-input100" data-symbol="&#xf023;"></span>
+        </div>
+
+        <!-- <div class="text-right p-t-8 p-b-31">
+          <a routerLink="/olvido-contrasenia" style="font-size: 12px">
+            olvido su contraseña?
+          </a>
+
+        </div> -->
+        <br>
+        <div class="container-login100-form-btn">
+          <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button (click)="this.loguin()" class="login100-form-btn">
+              Iniciar sesión
+            </button>
+          </div>
+        </div>
+
+
+        <div class="flex-col-c p-t-155">
+
+          <a class="txt2" routerLink="/registro">
+            Regístrate
+          </a>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>
