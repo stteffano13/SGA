@@ -9,7 +9,8 @@ import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
   declarations: [LoguinComponent, PrincipalComponent, MiCuentaComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class PaginasModule { }
