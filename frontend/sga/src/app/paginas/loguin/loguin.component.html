@@ -9,7 +9,7 @@
 </head>
 
 <div class="btn-flotante">
-<a   (click)="banderaRegistroAdmin=!banderaRegistroAdmin">Registra un estudiante nuevo</a>
+<a   (click)="banderaRegistroAdmin=!banderaRegistroAdmin">Registra un estudiante nuevo &nbsp;&nbsp; <i *ngIf="banderaRegistroAdmin"  >x</i> </a>
 
   <form *ngIf="banderaRegistroAdmin">
     <br><br>
@@ -20,6 +20,9 @@
     <div class="form-group">
       <label for="formGroupExampleInput2">Contraseña Administrador</label>
       <input type="password" class="form-control " id="formGroupExampleInput2" >
+    </div>
+    <div class="form-group text-center">
+    <button class="btn btn-dark " style="font-size: 13px;">Ingresar</button>
     </div>
   </form>
 
