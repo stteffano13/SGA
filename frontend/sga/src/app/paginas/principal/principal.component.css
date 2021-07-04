@@ -32,3 +32,15 @@ h4{
   
     opacity: 0.2;
 }
+.animacion:hover{
+
+  
+    transform: scale(1.1);
+    transition: all 1s;
+ 
+   
+    cursor: pointer;
+   
+  
+
+}

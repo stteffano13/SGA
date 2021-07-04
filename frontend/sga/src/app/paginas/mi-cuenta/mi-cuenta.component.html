@@ -1,0 +1,101 @@
+<div class="container" >
+  <br>
+  <h3 style="color: blue">Mi cuenta</h3>
+  <form #IngresarEstudiante="ngForm" (ngSubmit)="onRegisterEstudiante()">
+    <div class="row">
+
+      <div class="col-6 col-md-3 mx-auto">
+        <img src="../../../assets/images/IngresarEstudiante.png" class=" txt-center">
+      </div>
+      
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="nombreChofer"> Ingrese el Nombre</label>
+          <input style="text-transform:uppercase;" type="text" required class="form-control" #NombreChofer1="ngModel" [(ngModel)]="estudiante_register.nombre"
+            name="nombreChofer" id="nombreChofer" pattern="[ A-Za-zñÑ]*">
+          <div [hidden]="NombreChofer1.valid || NombreChofer1.pristine" class="alert alert-warning">
+            Ingrese solo letras
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cedulaChofer">Ingrese la Cédula</label>
+          <input type="text" required class="form-control" #CedulaChofer="ngModel" [(ngModel)]="estudiante_register.cedula" name="cedulaChofer"
+            id="cedulaChofer" pattern=".{10,10}">
+          <div [hidden]="CedulaChofer.valid || CedulaChofer.pristine" class="alert alert-warning">
+            Ingrese solo 10 digitos numéricos
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contrasenaChofer">Ingrese la contraseña</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" (click)="myFunctionChofer()">
+              <div class="input-group-text">
+                <i class="{{clase_ojoChofer}}"></i>
+              </div>
+            </div>
+            <input type="{{tipoChofer}}" required class="form-control" aria-label="Text input with checkbox" #ContrasenaChofer="ngModel"
+              [(ngModel)]="estudiante_register.contrasena" name="ContrasenaChofer" id="contrasenaChofer" pattern=".{6,}">
+          </div>
+          <div [hidden]="ContrasenaChofer.valid || ContrasenaChofer.pristine" class="alert alert-warning">
+            Contraseña mínima de 6 caracteres
+          </div>
+        </div>
+
+        <div class="card-columns">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="apellidoChofer">Ingrese el Apellido</label>
+          <input style="text-transform:uppercase;" type="text" required class="form-control" #ApellidoChofer="ngModel" [(ngModel)]="estudiante_register.apellido"
+            name="apellidoChofer" id="apellidoChofer" pattern="[ A-Za-zñÑ]*">
+          <div [hidden]="ApellidoChofer.valid || ApellidoChofer.pristine" class="alert alert-warning">
+            Ingrese solo letras
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="correoChofer">Ingrese el Correo</label>
+          <input type="email" required class="form-control" #CorreoChofer="ngModel" [(ngModel)]="estudiante_register.correo" name="correoChofer"
+            id="correoChofer" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+          <div [hidden]="CorreoChofer.valid || CorreoChofer.pristine" class="alert alert-warning">
+            Ingrese un correo electrónico válido
+          </div>
+        </div>
+        <!-- <div class="form-group">
+          <label for="licenciaChofer">Ingrese numero de licencia</label>
+          <input type="text" required class="form-control" #LicenciaChofer="ngModel" [(ngModel)]="chofer_register.num_licencia" name="licenciaChofer"
+            id="licenciaChofer" pattern="[0-9]*">
+          <div [hidden]="LicenciaChofer.valid || LicenciaChofer.pristine" class="alert alert-warning">
+            Ingrese solo números
+          </div>
+        </div>-->
+        <div class="form-group">
+          <label for="celularChofer">Ingrese numero celular</label>
+          <input type="text" required class="form-control" #CelularChofer="ngModel" [(ngModel)]="estudiante_register.tel_celular" name="celularChofer"
+            id="celularChofer" pattern=".{10,10}">
+          <div [hidden]="CelularChofer.valid || CelularChofer.pristine" class="alert alert-warning">
+            Ingrese solo 10 digitos numéricos
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="text-align: center;">
+        <div></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="text-align: center;">
+        <hr style="background-color: #e9ecef; width: 50%;">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="text-align: center;">
+        <button type="submit" class="btn btn-primary" [disabled]="!IngresarEstudiante.form.valid">Guardar Datos</button>
+      </div>
+    </div>
+  </form>
+</div>
