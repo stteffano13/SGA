@@ -4,7 +4,7 @@ body{
 span{
     font-size:12px;
 }
-a{
+.a{
   text-decoration:none; 
   color: #0062cc;
   border-bottom:2px solid #0062cc;
@@ -25,4 +25,10 @@ a{
 
 h4{
     font-size:17px; 
+}
+
+.imagen-fondo{
+    
+  
+    opacity: 0.2;
 }
