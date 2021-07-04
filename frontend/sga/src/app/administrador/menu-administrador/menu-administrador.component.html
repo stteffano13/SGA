@@ -1,3 +1,60 @@
-<p>
-  menu-administrador works!
-</p>
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+  
+  <body>
+  	<div id="page-container" class="main-admin">
+	  	<nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100">
+		  <a class="navbar-brand" href="#"></a>
+		  <div id="open-menu" class="menu-bar">
+		  	<div class="bars"></div>
+       
+		  </div>
+      <h3 class="white text-center">Adminsitrador</h3>
+		    <ul class="navbar-nav ml-auto">
+		      <li class="nav-item dropdown ets-right-0">
+          
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="../../../assets/images/logo.png" class="img-fluid rounded-circle border user-profile">
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a class="dropdown-item" href="#">Action</a>
+		          <a class="dropdown-item" href="#">Another action</a>
+		          <div class="dropdown-divider"></div>
+		          <a class="dropdown-item" href="#">Something else here</a>
+		        </div>
+		      </li>
+		    </ul>
+		</nav>
+	  	<div class="side-bar">
+	  		<div class="side-bar-links">
+	  			<div class="side-bar-logo text-center py-3">
+	  				<img src="" class="img-fluid rounded-circle border bg-secoundry mb-3">
+	  				<h5>Company Name</h5>
+	  			</div>
+	  		
+	  		</div>
+	  		<div class="side-bar-icons">
+	  			<!-- <div class="side-bar-logo text-center py-3">
+	  				<img src="" class="img-fluid rounded-circle border bg-secoundry mb-3">
+	  				<h5>Company Name</h5>
+	  			</div> -->
+	  			<div class="icons d-flex flex-column align-items-center">
+	  				<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-home"></i></a>
+	  				<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-users"></i></a>
+	  				<a href="#" class="set-width text-center display-inline-block my-1"><i class="fa fa-list"></i></a>
+	  			
+	  			</div>
+	  		</div>
+	  	</div>
+  	<div class="main-body-content w-100 ets-pt">
+  		<div class="table-responsive bg-light">
+  			<router-outlet></router-outlet>
+  		</div>
+  	</div>
+</div>
+
+  
+  </body>
+
