@@ -10,7 +10,7 @@ const { Op } = require("sequelize");
 
 
 async function saveEstudiante(req, res) {
-    
+
     try {
         var estudiante = Estudiante.build();
         var params = req.body; // cuerpo de la peticion post de la direccion http por post
@@ -33,7 +33,7 @@ async function saveEstudiante(req, res) {
                 ]
             }
         })
-        console.log("params",params);
+        console.log("params", params);
         if (estudianteEncontrado) {
             return res.status(500).send({
                 message: "El estudiante ya existe, revise  cédula y correo electronico"
@@ -182,11 +182,55 @@ async function getEstudiantes(req, res) {
 }
 
 
+async function buscarEstudiante(req, res) {
+
+    try {
+        var busqueda = req.params.busqueda;
+        console.log(busqueda);
+        if (!busqueda) {
+            res.status(404).send({
+                message: 'Ingrese un parametro de busqueda'
+            });
+        } else {
+            let estudiante = await Estudiante.findOne({
+                where: {
+                    [Op.and]: [{
+                        ESTADO_ESTUDIANTE: 0
+                    },
+
+                    {
+                       ID_ESTUDIANTE: busqueda
+
+                        
+                    }
+                    ]
+                }
+            });
+
+            if (!estudiante) {
+                res.status(404).send({
+                    message: "No se encuentra resultados de la busqueda"
+                });
+            } else {
+                res.status(200).send({
+                    estudiante
+                });
+            }
+
+        }
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
+        });
+    }
+}
+
 
 module.exports = {          // para exportar todas las funciones de este modulo
     saveEstudiante,
     loginEstudiante,
-    getEstudiantes
+    getEstudiantes,
+    buscarEstudiante
 
 
 

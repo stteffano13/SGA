@@ -50,6 +50,15 @@ export class EstudianteService {
       }
 
 
+      buscarEstudiante(buscar) {
+        console.log("dentro de buscar Estudiante" + buscar);
+        //console.log(params);
+        let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getTokenEstudiante() });
+        return this._http.get(this.url + "buscarEstudiante/" + buscar, { headers: headers })
+          .map(res => res.json());
+    
+      }
+    
 
     getIdentityEstudiante() {
         let identity = JSON.parse(localStorage.getItem("identity"));

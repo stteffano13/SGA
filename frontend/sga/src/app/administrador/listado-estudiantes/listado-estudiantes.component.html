@@ -26,7 +26,7 @@
         <td style="font-size: 130%">{{ listado.CORREO_ESTUDIANTE}}</td>
         <td style="font-size: 130%">{{listado.CELULAR_ESTUDIANTE }}</td>
         <td>
-          <input class="btn btn-primary " type="button" value="ver" (click)="aparecerUpdateDatosEstudiante(listado)">
+          <input class="btn btn-primary " type="button" value="ver"  [routerLink]="['../modificar-estudiante/', listado.ID_ESTUDIANTE ]">
         </td>
       </tr>
     </tbody>

@@ -1,0 +1,106 @@
+<div class="container">
+  <br>
+  <h5 style="color: blue">Modificar estudiantes</h5>
+  <form #ModificarEstudiante="ngForm">
+    <div class="row">
+      <div class="col-lg-12">
+        <img src="../../assets/imgs/IngresarEstudiante.png" style="display: block; margin-left: 40%; width: 15%;  height:18%; border-radius:50%">
+
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label> Nombre del Estudiante</label>
+          <input type="text" class="form-control" #NombreM="ngModel" [(ngModel)]="datosEstudiantes.NOMBRE_ESTUDIANTE" name="nombreM" [disabled]='textBox'
+            pattern="[ A-Za-zñÑ]*" required>
+          <div *ngIf="txtvalidacionModificarEstudiante" [hidden]="NombreM.valid || NombreM.pristine" class="alert alert-warning">
+            Ingrese solo letras
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Celular del Estudiante</label>
+          <input type="text" class="form-control" #CelularM="ngModel" [(ngModel)]="datosEstudiantes.CELULAR_ESTUDIANTE" name="celularM" [disabled]='textBox'
+            pattern=".{10,10}" required>
+          <div *ngIf="txtvalidacionModificarEstudiante" [hidden]="CelularM.valid || CelularM.pristine" class="alert alert-warning">
+            Ingrese solo 10 dígitos numericos
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Cédula del Estudiante</label>
+          <label style="font-size: 80%">&nbsp;&nbsp;La cédula no se puede modificar, tiene que eliminar el usuario</label>
+          <input type="text" class="form-control" #TelefonoM="ngModel" [(ngModel)]="datosEstudiantes.CEDULA_ESTUDIANTE" name="telefonoM" disabled
+            pattern="[0-9]*" required>
+          <div [hidden]="TelefonoM.valid || TelefonoM.pristine" class="alert alert-warning">
+            Ingrese solo números
+          </div>
+        </div>
+        <div class="card-columns">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label>Apellido del Estudiante</label>
+          <input type="text" class="form-control" #ApellidoM="ngModel" [(ngModel)]="datosEstudiantes.APELLIDO_ESTUDIANTE" name="apellidoM" [disabled]='textBox'
+            pattern="[ A-Za-zñÑ]*" required>
+          <div *ngIf="txtvalidacionModificarEstudiante" [hidden]="ApellidoM.valid || ApellidoM.pristine" class="alert alert-warning">
+            Ingrese solo letras
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo del Estudiante</label>
+          <input type="email" class="form-control" #CorreoM="ngModel" [(ngModel)]="datosEstudiantes.CORREO_ESTUDIANTE" name="correoM" [disabled]='textBox'
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+          <div *ngIf="txtvalidacionModificarEstudiante" [hidden]="CorreoM.valid || CorreoM.pristine" class="alert alert-warning">
+            Ingrese un correo electrónico válido
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contrasena">Modificar la contraseña</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" (click)='habilitarContrasenaC()'>
+              <div class="input-group-text">
+                <i class="{{clase_ojoUsuarioC}}"></i>
+              </div>
+            </div>
+            <input type="{{tipoUsuarioC}}" disabled required class="form-control" aria-label="Text input with checkbox" #Password="ngModel"
+              [(ngModel)]=" this.contrasenaUpdateEstudiante" name="contrasena" id="contrasena" pattern=".{6,}" [disabled]='textBoxContraC'>
+          </div>
+          <div *ngIf="txtvalidacionOjoModificarEstudiante" [hidden]="Password.valid || Password.pristine" class="alert alert-warning">
+            Contraseña mínima de 6 caracteres
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr style="background-color: #e9ecef; width: 50%;">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6" style="text-align: right;">
+        <button type="submit" class="btn btn-warning" style="color: #ffffff" (click)='habilitar()' [hidden]='txtHide'>
+          <i class="fa fa-edit fa-0.5x" style="color: #ffffff"></i> Modificar
+        </button>
+      </div>
+      <div class="col-md-6" style="text-align: left;">
+        <button (click)='onUpdateEstudiante(1)' type="submit" class="btn btn-danger" [hidden]='txtHide'>
+          <i class="fa fa-trash fa-0.5x" style="color: #ffffff"></i>
+          Eliminar
+        </button>
+      </div>
+      <div class="col-md-6" style="text-align: right;">
+        <button type="submit" class="btn btn-primary" (click)='onUpdateEstudiante(0)' [hidden]='txtAparece' [disabled]="!ModificarEstudiante.form.valid">
+          <i class="fa fa-save fa-0.5x" style="color: #ffffff"></i> Guardar Cambios
+        </button>
+      </div>
+      <div class="col-md-6" style="text-align: left;">
+        <button type="submit" class="btn btn-default" (click)="deshabilitar()" [hidden]='txtAparece'>
+          <i class="fa fa-ban fa-0.5x" style="color: #000000"></i>
+          Cancelar</button>
+      </div>
+    </div>
+  </form>
+</div>
