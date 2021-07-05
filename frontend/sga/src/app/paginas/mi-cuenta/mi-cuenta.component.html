@@ -14,8 +14,8 @@
       <i class="fa fa-user-circle white"></i> &nbsp; Usuario
     </button>
     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-      <button class="dropdown-item" type="button">Mi cuenta</button>
-      <button class="dropdown-item" type="button">Salir</button>
+      <button class="dropdown-item" type="button" [routerLink]="['../principal']">Principal</button>
+      <button class="dropdown-item" type="button" (click)="salirEstudiante()">Salir</button>
     
     </div>
   </div>
@@ -25,7 +25,7 @@
 <div class="container shadow   box-part bg-white w-50" >
   <br>
  
-  <form #IngresarEstudiante="ngForm" (ngSubmit)="onRegisterEstudiante()">
+  <form #IngresarEstudiante="ngForm" >
     <br>
     <div class="row">
 
@@ -38,16 +38,16 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="form-group">
-          <label for="nombreChofer">Nombre</label>
-          <input style="text-transform:uppercase;" type="text" required class="form-control" #NombreChofer1="ngModel" [(ngModel)]="estudiante_register.nombre"
+          <label for="nombreEstudiante">Nombre</label>
+          <input style="text-transform:uppercase;" type="text" required class="form-control" #nombreEstudiante="ngModel" [(ngModel)]="estudiante_register.nombre"
             name="nombreEstudiante" id="nombreEstudiante" pattern="[ A-Za-zñÑ]*">
           <div [hidden]="nombreEstudiante.valid || nombreEstudiante.pristine" class="alert alert-warning">
             Ingrese solo letras
           </div>
         </div>
         <div class="form-group">
-          <label for="cedulaChofer">Cédula</label>
-          <input type="text" required class="form-control" #CedulaChofer="ngModel" [(ngModel)]="estudiante_register.cedula" name="cedulaEstudiante"
+          <label for="cedulaEstudiante">Cédula</label>
+          <input type="text" required class="form-control" #cedulaEstudiante="ngModel" [(ngModel)]="estudiante_register.cedula" name="cedulaEstudiante"
             id="cedulaEstudiante" pattern=".{10,10}">
           <div [hidden]="cedulaEstudiante.valid || cedulaEstudiante.pristine" class="alert alert-warning">
             Ingrese solo 10 digitos numéricos
@@ -69,10 +69,10 @@
         </div>
 
         <div class="form-group">
-          <label for="celularChofer">Celular</label>
-          <input type="text" required class="form-control" #CelularChofer="ngModel" [(ngModel)]="estudiante_register.tel_celular" name="celularChofer"
-            id="celularChofer" pattern=".{10,10}">
-          <div [hidden]="CelularChofer.valid || CelularChofer.pristine" class="alert alert-warning">
+          <label for="celularEstudiante">Celular</label>
+          <input type="text" required class="form-control" #celularEstudiante="ngModel" [(ngModel)]="estudiante_register.tel_celular" name="celularEstudiante"
+            id="celularEstudiante" pattern=".{10,10}">
+          <div [hidden]="celularEstudiante.valid || celularEstudiante.pristine" class="alert alert-warning">
             Ingrese solo 10 digitos numéricos
           </div>
         </div>
@@ -96,10 +96,10 @@
       <div class="col-md-12" >
 
         <div class="form-group">
-          <label for="correoChofer">Correo</label>
-          <input type="email" required class="form-control" #CorreoChofer="ngModel" [(ngModel)]="estudiante_register.correo" name="correoChofer"
-            id="correoChofer" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-          <div [hidden]="CorreoChofer.valid || CorreoChofer.pristine" class="alert alert-warning">
+          <label for="correoEstudiante">Correo</label>
+          <input type="email" required class="form-control" #correoEstudiante="ngModel" [(ngModel)]="estudiante_register.correo" name="correoEstudiante"
+            id="correoEstudiante" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+          <div [hidden]="correoEstudiante.valid || correoEstudiante.pristine" class="alert alert-warning">
             Ingrese un correo electrónico válido
           </div>
         </div>

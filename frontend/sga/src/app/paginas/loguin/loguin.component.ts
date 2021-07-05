@@ -12,6 +12,7 @@ import { EstudianteService } from "../../servicios/estudiante.servicio";
 })
 export class LoguinComponent {
   public banderLoguin;
+  public banderaRegistroAdmin;
   public obj = {
     Correo: null,
     Contrasenia: null

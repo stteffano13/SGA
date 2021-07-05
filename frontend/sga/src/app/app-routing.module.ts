@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: 'login', component: LoguinComponent},
   {path: 'principal', component: PrincipalComponent},
   {path: 'mi-cuenta', component: MiCuentaComponent},
+  {path: '**', redirectTo: 'login'}
  
 ];
 

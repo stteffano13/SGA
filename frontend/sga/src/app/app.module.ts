@@ -7,6 +7,8 @@ import {PaginasModule} from './paginas/paginas.module';
 import {FormsModule} from "@angular/forms";
 import { AdministradorService } from "./servicios/adminsitrador.servicio";
 import { EstudianteService } from "./servicios/estudiante.servicio";
+import {RouterModule} from "@angular/router";
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,6 +19,7 @@ import { EstudianteService } from "./servicios/estudiante.servicio";
     AppRoutingModule,
     PaginasModule,
     FormsModule,
+    RouterModule
   
   ],
   providers: [AdministradorService,EstudianteService],

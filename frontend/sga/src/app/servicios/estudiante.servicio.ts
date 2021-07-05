@@ -58,11 +58,12 @@ export class EstudianteService {
     }
 
     logoutEstudiante() {
-        localStorage.removeItem("identityAdmin");
+        localStorage.removeItem("identity");
         localStorage.removeItem("Token");
         localStorage.clear();
         this.identity = null;
         this.token = null;
+        
     }
 
 

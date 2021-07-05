@@ -4,7 +4,7 @@ import {MenuAdministradorComponent} from "./menu-administrador/menu-administrado
 import {RegistroEstudianteComponent} from "./registro-estudiante/registro-estudiante.component";
 const routes: Routes = [{path:'menu-administrador', component:MenuAdministradorComponent,
   children: [
-    { path: 'Registro-estudiante', component: RegistroEstudianteComponent}]}];
+    { path: 'registro-estudiante', component: RegistroEstudianteComponent}]}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
