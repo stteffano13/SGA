@@ -58,6 +58,17 @@ export class EstudianteService {
           .map(res => res.json());
     
       }
+      update_estudiante(estudiante_to_update, estadoContrasena) {
+        estudiante_to_update.estadoContrasena = estadoContrasena;
+        console.log("clave docente antes de mndar",estudiante_to_update.estadoContrasena);
+        let json = JSON.stringify(estudiante_to_update);
+        let params = json;
+        console.log(params);
+        let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getTokenEstudiante() });
+        return this._http
+          .put(this.url + "update-estudiante/" + estudiante_to_update.ID_ESTUDIANTE, params, { headers: headers })
+          .map(res => res.json());
+      }
     
 
     getIdentityEstudiante() {

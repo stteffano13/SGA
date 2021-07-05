@@ -9,6 +9,7 @@ var jwt = require('../services/jwt');
 const { Op } = require("sequelize");
 
 
+
 async function saveEstudiante(req, res) {
 
     try {
@@ -161,7 +162,7 @@ async function getEstudiantes(req, res) {
 
     try {
 
-        let listadoEstudiantes = await Estudiante.findAll();
+        let listadoEstudiantes = await Estudiante.findAll({where:{ ESTADO_ESTUDIANTE: 0}});
 
 
         if (!listadoEstudiantes) {
@@ -225,12 +226,157 @@ async function buscarEstudiante(req, res) {
     }
 }
 
+async function updateEstudiante(req, res) {
+    try {
+
+        var userId = req.params.id; // en este caso e sparametro de ruta es decir el id para todo lo demas req.body
+        var update = req.body;
+
+
+        if (update.estadoContrasena == '1') {
+            //  console.log("entre para encriptar", update.estadoContrasena);
+            // encriptar contrasena y guardar datos
+            hash = true;
+            await bcrypt.hash(update.contrasena, null, null, async function (err, hash) {
+                update.CONTRASENA_ESTUDIANTE = hash;
+                //   console.log("contrasena nueva encriptada", update.contrasena);
+                update.estadoContrasena == '';
+
+                let estudiante = await Estudiante.findOne({ where: { ID_ESTUDIANTE: userId } });
+                let userUpdate = await estudiante.update({
+                    NOMBRE_ESTUDIANTE: update.NOMBRE_ESTUDIANTE,
+                    APELLIDO_ESTUDIANTE: update.APELLIDO_ESTUDIANTE,
+                    CORREO_ESTUDIANTE: update.CORREO_ESTUDIANTE,
+                    CONTRASENA_ESTUDIANTE: update.CONTRASENA_ESTUDIANTE,
+                    CEDULA_ESTUDIANTE: update.CEDULA_ESTUDIANTE,
+                    CELULAR_ESTUDIANTE: update.CELULAR_ESTUDIANTE,
+                    ESTADO_ESTUDIANTE: update.ESTADO_ESTUDIANTE
+                });
+
+                if (!userUpdate) {
+                    res.status(404).send({
+                        message: "El estudiante no ha podido actualizarse."
+                    });
+                } else {
+                    res.status(200).send({
+                        message: "El estudiante se actualizado."
+                    });
+                }
+
+            });
+        } else {
+            update.estadoContrasena == '';
+
+            if (update.estado == 1) {
+                let matriculaEncontrada = await Matricula.findOne({
+                    where: { ESTADO_MATRICULA: 0, ID_ESTUDIANTE: update.ID_ESTUDIANTE }
+                })
+                if (matriculaEncontrada) {
+                    res.status(400).send({
+                        message: "No eliminar, hay matriculas asignadas al estudiante"
+                    });
+
+                } else {
+
+                    let estudianteEncontrado = await Estudiante.findOne({ where: { ID_ESTUDIANTE: userId } })
+                    let estudianteActualizado = await estudianteEncontrado.update({
+                        NOMBRE_ESTUDIANTE: update.NOMBRE_ESTUDIANTE,
+                        APELLIDO_ESTUDIANTE: update.APELLIDO_ESTUDIANTE,
+                        CORREO_ESTUDIANTE: update.CORREO_ESTUDIANTE,
+                        CONTRASENA_ESTUDIANTE: update.CONTRASENA_ESTUDIANTE,
+                        CEDULA_ESTUDIANTE: update.CEDULA_ESTUDIANTE,
+                        CELULAR_ESTUDIANTE: update.CELULAR_ESTUDIANTE,
+                        ESTADO_ESTUDIANTE: update.ESTADO_ESTUDIANTE
+                    });
+                    if (!estudianteActualizado) {
+                        res.status(404).send({
+                            message: "El estudiante no ha podido actualizarse."
+                        });
+                    } else {
+                        res.status(200).send({
+                            message: "El estudiante se ha actualizado correctamente."
+                        });
+                    }
+
+                }
+
+            } else {
+                let estudianteEncontrado = await Estudiante.findOne({ where: { ESTADO_ESTUDIANTE: 0, CORREO_ESTUDIANTE: update.CORREO_ESTUDIANTE } });
+
+                if (estudianteEncontrado) {
+                    if (estudianteEncontrado.ID_ESTUDIANTE != update.ID_ESTUDIANTE) {
+                        res.status(500).send({
+                            message: "El correo que desea ingresar pertenece a otro estudiante"
+                        });
+                    } else {
+
+                        let estudianteActualizado = await estudianteEncontrado.update({
+                            NOMBRE_ESTUDIANTE: update.NOMBRE_ESTUDIANTE,
+                            APELLIDO_ESTUDIANTE: update.APELLIDO_ESTUDIANTE,
+                            CORREO_ESTUDIANTE: update.CORREO_ESTUDIANTE,
+                            CONTRASENA_ESTUDIANTE: update.CONTRASENA_ESTUDIANTE,
+                            CEDULA_ESTUDIANTE: update.CEDULA_ESTUDIANTE,
+                            CELULAR_ESTUDIANTE: update.CELULAR_ESTUDIANTE,
+                            ESTADO_ESTUDIANTE: update.ESTADO_ESTUDIANTE
+                        });
+
+                        if (!estudianteActualizado) {
+                            res.status(404).send({
+                                message: "El estudiante no ha podido actualizarse."
+                            });
+                        } else {
+                            res.status(200).send({
+                                message: "El estudiante se actualizado correctamente."
+                            });
+                        }
+
+                    }
+
+                } else {
+
+                    let estudiante = await Estudiante.findOne({ where: { ID_ESTUDIANTE: userId } })
+                    let userUpdate = await estudiante.update({
+                        NOMBRE_ESTUDIANTE: update.NOMBRE_ESTUDIANTE,
+                        APELLIDO_ESTUDIANTE: update.APELLIDO_ESTUDIANTE,
+                        CORREO_ESTUDIANTE: update.CORREO_ESTUDIANTE,
+                        CONTRASENA_ESTUDIANTE: update.CONTRASENA_ESTUDIANTE,
+                        CEDULA_ESTUDIANTE: update.CEDULA_ESTUDIANTE,
+                        CELULAR_ESTUDIANTE: update.CELULAR_ESTUDIANTE,
+                        ESTADO_ESTUDIANTE: update.ESTADO_ESTUDIANTE
+                    });
+
+                    if (!userUpdate) {
+                        res.status(404).send({
+                            message: "El estudiante no ha podido actualizarse."
+                        });
+                    } else {
+                        res.status(200).send({
+                            message: "El estudiante se actualizado correctamente."
+                        });
+                    }
+
+                }
+
+            }
+
+        }
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
+        });
+    }
+
+
+}
+
+
 
 module.exports = {          // para exportar todas las funciones de este modulo
     saveEstudiante,
     loginEstudiante,
     getEstudiantes,
-    buscarEstudiante
+    buscarEstudiante,
+    updateEstudiante
 
 
 

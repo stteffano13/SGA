@@ -10,6 +10,6 @@ api.post('/saveEstudiante',EstudianteController.saveEstudiante);
 api.post('/loginEstudiante', EstudianteController.loginEstudiante);
 api.get('/getListadoEstudiantes',md_auth.ensureAuth, EstudianteController.getEstudiantes);
 api.get('/buscarEstudiante/:busqueda',md_auth.ensureAuth, EstudianteController.buscarEstudiante);
-
+api.put('/update-estudiante/:id', md_auth.ensureAuth, EstudianteController.updateEstudiante);
 
 module.exports = api;// exportamos el router de express para que las routas funcionen por todo el back end
