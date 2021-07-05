@@ -12,6 +12,7 @@ var app = express();
 
 
 var administrador_rutes = require('./routes/administrador');
+var estudiante_rutes = require('./routes/estudiante');
 /*
 
 
@@ -38,7 +39,7 @@ app.use((req, res, next) => {
 
 app.use('/api', administrador_rutes);
 
-
+app.use('/api', estudiante_rutes);
 
 
 module.exports = app; // hace referencia a la variable de express

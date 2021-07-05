@@ -60,20 +60,20 @@ async function loginAdministrador(req, res) {
 
     try {
         var params = req.body;
-        var correo = params.email;
-        var password = params.password;
+        var correo = params.Correo;
+        var password = params.Contrasenia;
 
 
         let administrador = await Administrador.findOne({ where: { CORREO_ADMINISTRADOR: correo } });
 
-       console.log("correo", correo);
+       console.log("correo", correo, password);
         if (!administrador) {
             // console.log("error 404 el usuario no existe");
             res.status(402).send({
                 message: 'El Usuario no existe.'
             });
         } else {
-            //console.log(user);
+            console.log(administrador.dataValues.CONTRASENA_ADMINISTRADOR);
             let result = bcrypt.compareSync(password, administrador.dataValues.CONTRASENA_ADMINISTRADOR);
             if (result) {
                 if (params.getHash) {
@@ -110,122 +110,12 @@ async function loginAdministrador(req, res) {
 
 
 
-async function savePeriodoLectivoActual(req, res) {
-
-    try {
-        var params = req.body;
-
-
-        let periodoEncontrado = await Periodo.findOne();
-        console.log(" periodo encontrado", periodoEncontrado);
-        if (periodoEncontrado) {
-            console.log(" esto es lo que voy a buscar de periodo", params);
-
-            let periodoActualizado = await periodoEncontrado.update({ PERIODO: params.periodo });
-
-
-            if (!periodoActualizado) {
-                console.log("no se actualizo");
-                res.status(404).send({ message: "El periodo no se ha actualizado" });
-            } else {
-                console.log("se guardo", periodoActualizado);
-                res.status(200).send({ message: "El periodo se ha actualizado correctamente" });
-            }
-
-
-
-
-        }
-    } catch (err) {
-        res.status(500).send({
-            message: err.name
-        });
-    }
-
-}
-
-
-
-async function getPeridoLectivoActual(req, res) {
-    try {
-
-        let periodo = await Periodo.findOne();
-        console.log("periodo", periodo.dataValues.PERIODO);
-
-        if (!periodo) {
-            res.status(200).send({
-                message: 'No se encuentra el periodo actual'
-            });
-        } else {
-
-            res.status(200).send({
-                periodo: periodo.dataValues.PERIODO
-            });
-        }
-    } catch (err) {
-        res.status(500).send({
-            message: err.name
-        });
-    }
-
-}
-
-
-async function getPeridos(req, res) {
-    try {
-        var periodo = await Periodo.findAll();
-
-
-        if (!periodo) {
-            return res.status(200).send({
-                message: 'No tiene periodos'
-            });
-        } else {
-
-            return res.status(200).send({
-                periodo
-            });
-        }
-    } catch (err) {
-        res.status(500).send({
-            message: err.name
-        });
-    }
-
-}
-
-async function getSubirNotas(req, res) {                    // pendiente revisar si get subir notas vale con los docentes
-
-    try {
-        let subirnota = await SubirNota.findOne();
-
-
-        if (!subirnota) {
-            return res.status(200).send({
-                message: 'No tiene los parametros'
-            });
-        } else {
-            console.log(subirnota);
-            return res.status(200).send({
-                subirnota
-            });
-        }
-    } catch (err) {
-        res.status(500).send({
-            message: err.name
-        });
-    }
-}
 
 module.exports = {          // para exportar todas las funciones de este modulo
 
     saveAdministrador,
     loginAdministrador,
-    savePeriodoLectivoActual,
-    getPeridoLectivoActual,
-    getPeridos,
-    getSubirNotas
-
+   
 
 
 };

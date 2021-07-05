@@ -15,14 +15,14 @@
     <br><br>
     <div class="form-group">
       <label for="formGroupExampleInput">Usuario Administrador</label>
-      <input type="text" class="form-control" id="formGroupExampleInput" >
+      <input type="text" class="form-control" id="formGroupExampleInput" #Usuario="ngModel" [(ngModel)]="obj.Correo" name="usuario"  >
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Contraseña Administrador</label>
-      <input type="password" class="form-control " id="formGroupExampleInput2" >
+      <input type="password" class="form-control " id="formGroupExampleInput2" #Password="ngModel" [(ngModel)]="obj.Contrasenia" name="password" >
     </div>
     <div class="form-group text-center">
-    <button class="btn btn-dark " style="font-size: 13px;">Ingresar</button>
+    <button class="btn btn-dark " style="font-size: 13px;" (click)="loguinAdministrador()">Ingresar</button>
     </div>
   </form>
 
@@ -86,7 +86,7 @@
         <div class="container-login100-form-btn">
           <div class="wrap-login100-form-btn">
             <div class="login100-form-bgbtn"></div>
-            <button (click)="this.loguin()" class="login100-form-btn">
+            <button (click)="loguinEstudiante()" class="login100-form-btn">
               Iniciar sesión
             </button>
           </div>

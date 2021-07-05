@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sga';
+  title = 'SGA';
+
+  public token;
+  public identity;
+  constructor() {
+  }
+
+  ngOnInit() {
+
+    
+    // console.log("las vaibles del Storage");
+    // console.log(this.identity + this.token);
+
+  }
 }
