@@ -7,8 +7,9 @@ import { RegistroEstudianteComponent } from './registro-estudiante/registro-estu
 import {FormsModule} from "@angular/forms";
 import { ListadoEstudiantesComponent } from './listado-estudiantes/listado-estudiantes.component';
 import { ModificarEstudianteComponent } from './modificar-estudiante/modificar-estudiante.component';
+import { InicioAdministradorComponent } from './inicio-administrador/inicio-administrador.component';
 @NgModule({
-  declarations: [MenuAdministradorComponent, RegistroEstudianteComponent, ListadoEstudiantesComponent, ModificarEstudianteComponent],
+  declarations: [MenuAdministradorComponent, RegistroEstudianteComponent, ListadoEstudiantesComponent, ModificarEstudianteComponent, InicioAdministradorComponent],
   imports: [
     CommonModule,
     AdministradorRoutingModule,

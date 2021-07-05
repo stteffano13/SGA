@@ -4,10 +4,13 @@ import {MenuAdministradorComponent} from "./menu-administrador/menu-administrado
 import {RegistroEstudianteComponent} from "./registro-estudiante/registro-estudiante.component";
 import {ListadoEstudiantesComponent} from "./listado-estudiantes/listado-estudiantes.component";
 import {ModificarEstudianteComponent} from "./modificar-estudiante/modificar-estudiante.component";
+import {InicioAdministradorComponent} from "./inicio-administrador/inicio-administrador.component";
+
 const routes: Routes = [{path:'menu-administrador', component:MenuAdministradorComponent,
   children: [
     { path: 'registro-estudiante', component: RegistroEstudianteComponent},
     { path: 'listado-estudiantes', component: ListadoEstudiantesComponent},
+    { path: 'inicio-administrador', component: InicioAdministradorComponent},
     { path: 'modificar-estudiante/:idEstudiante', component: ModificarEstudianteComponent}]}];
     
 

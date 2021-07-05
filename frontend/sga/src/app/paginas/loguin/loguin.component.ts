@@ -49,7 +49,7 @@ export class LoguinComponent {
           this.mensageError("el token nose ha generado");
         } else {
           localStorage.setItem("Token", this.token);
-          this.router.navigate(['administrador/menu-administrador']);
+          this.router.navigate(['administrador/menu-administrador/inicio-administrador']);
         }
       }
     } catch (e) {

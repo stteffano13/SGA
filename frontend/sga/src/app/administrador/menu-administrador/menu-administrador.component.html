@@ -41,7 +41,7 @@
 	  				<h5>Company Name</h5>
 	  			</div> -->
 	  			<div class="icons d-flex flex-column align-items-center">
-	  				<a href="#" class="set-width text-center display-inline-block my-1" [routerLink]="['../menu-administrador']"><i class="fa fa-home"></i></a>
+	  				<a href="#" class="set-width text-center display-inline-block my-1" [routerLink]="['inicio-administrador']"><i class="fa fa-home"></i></a>
 	  				<a href="#" class="set-width text-center display-inline-block my-1" [routerLink]="['registro-estudiante']"><i class="fa fa-users"></i></a>
 	  				<a href="#" class="set-width text-center display-inline-block my-1" [routerLink]="['listado-estudiantes']"><i class="fa fa-list"></i></a>
 	  				<a href="#" class="set-width text-center display-inline-block my-1 " (click)="salirAdministrador()"><i class="fa fa-times" ></i></a>
@@ -50,6 +50,7 @@
 	  	</div>
   	<div class="main-body-content w-100 ets-pt">
   		<div class="table-responsive bg-light">
+    
   			<router-outlet></router-outlet>
   		</div>
   	</div>
