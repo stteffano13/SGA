@@ -10,11 +10,15 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class MiCuentaComponent implements OnInit {
   public estudiante_register: Estudiante;
   public clase_ojoEstudiante = 'fa fa-eye fa-lg';
+  public identity;
   constructor(public route: ActivatedRoute, public router: Router, public _estudianteServicio:EstudianteService) { 
     this.estudiante_register = new Estudiante("", "", "", "", "", "", "", "");
   }
 
+
   ngOnInit() {
+    this.identity = this._estudianteServicio.getIdentityEstudiante();
+    console.log("identyti",this.identity);
   }
 
   salirEstudiante(){

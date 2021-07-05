@@ -15,6 +15,15 @@ export class EstudianteService {
         this.url = GLOBAL.url;
     }
 
+    registerEstudiante(estudiante_to_register) {
+        let json = JSON.stringify(estudiante_to_register);
+        let params = json;
+        console.log(params);
+        let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getTokenEstudiante() });
+        return this._http
+          .post(this.url + "saveEstudiante", params, { headers: headers })
+          .map(res => res.json());
+      }
 
     singupEstudiante(estudiante_to_login, getHash) {
         if (getHash != " ") {
@@ -31,12 +40,19 @@ export class EstudianteService {
             .map(res => res.json());
     }
 
+    getListadoEstudiantes() {
 
+
+        let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getTokenEstudiante() });
+        return this._http
+          .get(this.url + "getListadoEstudiantes", { headers: headers })
+          .map(res => res.json());
+      }
 
 
 
     getIdentityEstudiante() {
-        let identity = JSON.parse(localStorage.getItem("identityAdmin"));
+        let identity = JSON.parse(localStorage.getItem("identity"));
         if (identity != "undefined") {
             this.identity = identity;
         } else {
@@ -63,7 +79,7 @@ export class EstudianteService {
         localStorage.clear();
         this.identity = null;
         this.token = null;
-        
+
     }
 
 

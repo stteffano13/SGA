@@ -8,6 +8,7 @@ const md_auth = require('../middleware/authenticated');
 const api = express.Router(); // esto sirve para crear las rutas 
 api.post('/saveEstudiante',EstudianteController.saveEstudiante);
 api.post('/loginEstudiante', EstudianteController.loginEstudiante);
+api.get('/getListadoEstudiantes',md_auth.ensureAuth, EstudianteController.getEstudiantes);
 
 
 

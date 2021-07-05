@@ -5,8 +5,9 @@ import { AdministradorRoutingModule } from './administrador-routing.module';
 import { MenuAdministradorComponent } from './menu-administrador/menu-administrador.component';
 import { RegistroEstudianteComponent } from './registro-estudiante/registro-estudiante.component';
 import {FormsModule} from "@angular/forms";
+import { ListadoEstudiantesComponent } from './listado-estudiantes/listado-estudiantes.component';
 @NgModule({
-  declarations: [MenuAdministradorComponent, RegistroEstudianteComponent],
+  declarations: [MenuAdministradorComponent, RegistroEstudianteComponent, ListadoEstudiantesComponent],
   imports: [
     CommonModule,
     AdministradorRoutingModule,

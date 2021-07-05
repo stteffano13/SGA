@@ -156,13 +156,37 @@ async function loginEstudiante(req, res) {
     }
 }
 
+async function getEstudiantes(req, res) {
 
+
+    try {
+
+        let listadoEstudiantes = await Estudiante.findAll();
+
+
+        if (!listadoEstudiantes) {
+            return res.status(200).send({
+                message: 'No tiene Estudiantes'
+            });
+        }
+
+        return res.status(200).send({
+            listadoEstudiantes
+        });
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
+        });
+    }
+
+}
 
 
 
 module.exports = {          // para exportar todas las funciones de este modulo
     saveEstudiante,
-    loginEstudiante
+    loginEstudiante,
+    getEstudiantes
 
 
 

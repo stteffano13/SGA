@@ -1,0 +1,36 @@
+<div  class="w-75 mx-auto">
+  <div class="row">
+    <div class="col-md-12" style="text-align: center; color: #2863a9">
+      <h3>LISTADO ESTUDIANTES
+      </h3>
+    </div>
+    <div class="col-md-12">
+      <hr style="background-color: #e9ecef; width: 50%;">
+    </div>
+  </div>
+  <table class="table  text-center">
+    <thead>
+      <tr style="background-color: #343a40; align-content: center">
+        <th style="color: white" scope="col">#</th>
+        <th style="color: white" scope="col">Nombre</th>
+        <th style="color: white" scope="col">Cédula</th>
+        <th style="color: white" scope="col">Correo</th>
+        <th style="color: white" scope="col">Celular</th>
+        <th style="color: white" scope="col">Opción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let listado of  listadoEstudiantes">
+        <th scope="row">1</th>
+
+        <td style="font-size: 130%">{{listado.NOMBRE_ESTUDIANTE}} {{ listado.APELLIDO_ESTUDIANTE}}</td>
+        <td style="font-size: 130%">{{listado.CEDULA_ESTUDIANTE}}</td>
+        <td style="font-size: 130%">{{ listado.CORREO_ESTUDIANTE}}</td>
+        <td style="font-size: 130%">{{listado.CELULAR_ESTUDIANTE }}</td>
+        <td>
+          <input class="btn btn-primary " type="button" value="ver" (click)="aparecerUpdateDatosEstudiante(listado)">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

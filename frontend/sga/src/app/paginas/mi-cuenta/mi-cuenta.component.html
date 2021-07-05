@@ -39,15 +39,15 @@
       <div class="col-lg-6">
         <div class="form-group">
           <label for="nombreEstudiante">Nombre</label>
-          <input style="text-transform:uppercase;" type="text" required class="form-control" #nombreEstudiante="ngModel" [(ngModel)]="estudiante_register.nombre"
+          <input style="text-transform:uppercase;" type="text" required class="form-control" #nombreEstudiante="ngModel" [(ngModel)]="this.identity.NOMBRE_ESTUDIANTE"
             name="nombreEstudiante" id="nombreEstudiante" pattern="[ A-Za-zñÑ]*">
           <div [hidden]="nombreEstudiante.valid || nombreEstudiante.pristine" class="alert alert-warning">
-            Ingrese solo letras
+            Ingrese solo letras 
           </div>
         </div>
         <div class="form-group">
           <label for="cedulaEstudiante">Cédula</label>
-          <input type="text" required class="form-control" #cedulaEstudiante="ngModel" [(ngModel)]="estudiante_register.cedula" name="cedulaEstudiante"
+          <input type="text" required class="form-control" #cedulaEstudiante="ngModel" [(ngModel)]="this.identity.CEDULA_ESTUDIANTE" name="cedulaEstudiante"
             id="cedulaEstudiante" pattern=".{10,10}">
           <div [hidden]="cedulaEstudiante.valid || cedulaEstudiante.pristine" class="alert alert-warning">
             Ingrese solo 10 digitos numéricos
@@ -60,17 +60,17 @@
       </div>
       <div class="col-lg-6">
         <div class="form-group">
-          <label for="apellidoChofer">Apellido</label>
-          <input style="text-transform:uppercase;" type="text" required class="form-control" #ApellidoChofer="ngModel" [(ngModel)]="estudiante_register.apellido"
-            name="apellidoChofer" id="apellidoChofer" pattern="[ A-Za-zñÑ]*">
-          <div [hidden]="ApellidoChofer.valid || ApellidoChofer.pristine" class="alert alert-warning">
+          <label for="apellidoEstudiante">Apellido</label>
+          <input style="text-transform:uppercase;" type="text" required class="form-control" #apellidoEstudiante="ngModel" [(ngModel)]="this.identity.APELLIDO_ESTUDIANTE"
+            name="apellidoEstudiante" id="apellidoEstudiante" pattern="[ A-Za-zñÑ]*">
+          <div [hidden]="apellidoEstudiante.valid || apellidoEstudiante.pristine" class="alert alert-warning">
             Ingrese solo letras
           </div>
         </div>
 
         <div class="form-group">
           <label for="celularEstudiante">Celular</label>
-          <input type="text" required class="form-control" #celularEstudiante="ngModel" [(ngModel)]="estudiante_register.tel_celular" name="celularEstudiante"
+          <input type="text" required class="form-control" #celularEstudiante="ngModel" [(ngModel)]="this.identity.CELULAR_ESTUDIANTE" name="celularEstudiante"
             id="celularEstudiante" pattern=".{10,10}">
           <div [hidden]="celularEstudiante.valid || celularEstudiante.pristine" class="alert alert-warning">
             Ingrese solo 10 digitos numéricos
@@ -97,7 +97,7 @@
 
         <div class="form-group">
           <label for="correoEstudiante">Correo</label>
-          <input type="email" required class="form-control" #correoEstudiante="ngModel" [(ngModel)]="estudiante_register.correo" name="correoEstudiante"
+          <input type="email" required class="form-control" #correoEstudiante="ngModel" [(ngModel)]="this.identity.CORREO_ESTUDIANTE" name="correoEstudiante"
             id="correoEstudiante" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
           <div [hidden]="correoEstudiante.valid || correoEstudiante.pristine" class="alert alert-warning">
             Ingrese un correo electrónico válido
@@ -107,13 +107,13 @@
       </div>
     </div>
   
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-12" style="text-align: center;">
         <button type="submit" class="btn btn-primary" [disabled]="!IngresarEstudiante.form.valid">Guardar Datos</button>
         <br>  <br>  
       </div>
     
-    </div>
+    </div> -->
   </form>
  
 </div>

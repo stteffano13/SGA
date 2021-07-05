@@ -68,7 +68,7 @@
     <div class="row">
 
       
-      <div class="col-md-12" >
+      <div class="col-md-6" >
 
         <div class="form-group">
           <label for="correoChofer">Correo</label>
@@ -78,13 +78,27 @@
             Ingrese un correo electrónico válido
           </div>
         </div>
+        
+      </div>
 
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="contrasenaEstudiante">Ingrese la contraseña</label>
+          <div class="input-group mb-3">
+            
+            <input type="{{tipoChofer}}" required class="form-control" aria-label="Text input with checkbox" #contrasenaEstudiante="ngModel"
+              [(ngModel)]="estudiante_register.contrasena" name="contrasenaEstudiante" id="contrasenaEstudiante" pattern=".{6,}">
+          </div>
+          <div [hidden]="contrasenaEstudiante.valid || contrasenaEstudiante.pristine" class="alert alert-warning">
+            Contraseña mínima de 6 caracteres
+          </div>
+        </div>
       </div>
     </div>
   
     <div class="row">
       <div class="col-md-12" style="text-align: center;">
-        <button type="submit" class="btn btn-primary" [disabled]="!IngresarEstudiante.form.valid">Guardar Datos</button>
+        <button type="submit" class="btn btn-primary" (click)="onRegisterEstudiante();IngresarEstudiante.reset()" [disabled]="!IngresarEstudiante.form.valid">Guardar Datos</button>
         <br>  <br>  
       </div>
     
