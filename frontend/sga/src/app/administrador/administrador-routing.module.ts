@@ -5,13 +5,13 @@ import {RegistroEstudianteComponent} from "./registro-estudiante/registro-estudi
 import {ListadoEstudiantesComponent} from "./listado-estudiantes/listado-estudiantes.component";
 import {ModificarEstudianteComponent} from "./modificar-estudiante/modificar-estudiante.component";
 import {InicioAdministradorComponent} from "./inicio-administrador/inicio-administrador.component";
-
-const routes: Routes = [{path:'menu-administrador', component:MenuAdministradorComponent,
+import { AuthAdminGuard } from '../shared/guards/auth-admin.guard';
+const routes: Routes = [{path:'menu-administrador', component:MenuAdministradorComponent,canActivate:[AuthAdminGuard],
   children: [
-    { path: 'registro-estudiante', component: RegistroEstudianteComponent},
-    { path: 'listado-estudiantes', component: ListadoEstudiantesComponent},
-    { path: 'inicio-administrador', component: InicioAdministradorComponent},
-    { path: 'modificar-estudiante/:idEstudiante', component: ModificarEstudianteComponent}]}];
+    { path: 'registro-estudiante', component: RegistroEstudianteComponent, canActivate:[AuthAdminGuard]},
+    { path: 'listado-estudiantes', component: ListadoEstudiantesComponent,canActivate:[AuthAdminGuard]},
+    { path: 'inicio-administrador', component: InicioAdministradorComponent,canActivate:[AuthAdminGuard]},
+    { path: 'modificar-estudiante/:idEstudiante', component: ModificarEstudianteComponent,canActivate:[AuthAdminGuard]}]}];
     
 
 @NgModule({
