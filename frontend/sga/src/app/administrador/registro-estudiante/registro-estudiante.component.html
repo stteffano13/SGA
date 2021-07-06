@@ -91,7 +91,7 @@
           <label for="contrasenaEstudiante">Ingrese la contraseña</label>
           <div class="input-group mb-3">
             
-            <input type="{{tipoChofer}}" required class="form-control" aria-label="Text input with checkbox" #contrasenaEstudiante="ngModel"
+            <input  required class="form-control" aria-label="Text input with checkbox" #contrasenaEstudiante="ngModel"
               [(ngModel)]="estudiante_register.contrasena" name="contrasenaEstudiante" id="contrasenaEstudiante" pattern=".{6,}">
           </div>
           <div [hidden]="contrasenaEstudiante.valid || contrasenaEstudiante.pristine" class="alert alert-warning">
