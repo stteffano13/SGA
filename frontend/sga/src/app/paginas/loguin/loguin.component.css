@@ -115,3 +115,15 @@
 		right: 20px;
 	}
 }
+
+
+.spinner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    align-items: center;
+    text-align: center;
+    z-index: 100;
+   
+}

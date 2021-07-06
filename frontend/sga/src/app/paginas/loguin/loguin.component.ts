@@ -24,6 +24,7 @@ export class LoguinComponent {
   public response2;
 
   constructor(public route: ActivatedRoute, public router: Router , public _adminsitradorServicio:AdministradorService,public _estudianteServicio:EstudianteService) {
+  
   }
 
   public async loguinAdministrador() {
@@ -34,13 +35,13 @@ export class LoguinComponent {
         this.response = await this._adminsitradorServicio.singupAdministrador(this.obj, "").toPromise();
    
         this.identity = this.response.administrador;
-        console.log(this.response.administrador,"identity")
+        console.log(this.response.administrador,"identityAdmin")
 
       if (!this.identity.CORREO_ADMINISTRADOR) {
         this.mensageError("el usuario no se ha logueado correctamente");
       } else {
 
-        localStorage.setItem("identity", JSON.stringify(this.identity));
+        localStorage.setItem("identityAdmin", JSON.stringify(this.identity));
     
         let reponse2 = await this._adminsitradorServicio.singupAdministrador(this.obj, "true").toPromise();
         this.loading = false;
