@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     7/4/2021 4:53:58 PM                          */
+/* Created on:     7/6/2021 4:23:06 PM                          */
 /*==============================================================*/
 
 
@@ -33,6 +33,7 @@ create table ESTUDIANTE
    CEDULA_ESTUDIANTE    text not null,
    CELULAR_ESTUDIANTE   varchar(10) not null,
    ESTADO_ESTUDIANTE    int not null,
+   CONTRASENA_VISIBLE   text,
    primary key (ID_ESTUDIANTE)
 );
 

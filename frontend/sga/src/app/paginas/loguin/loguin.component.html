@@ -15,11 +15,11 @@
         <br><br>
         <div class="form-group">
           <label for="formGroupExampleInput">Usuario Administrador</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" #Usuario="ngModel" [(ngModel)]="obj.Correo" name="usuario"  >
+          <input type="text" class="form-control" id="formGroupExampleInput" #Usuario="ngModel" [(ngModel)]="objAdmin.Correo" name="usuario"  >
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput2">Contraseña Administrador</label>
-          <input type="password" class="form-control " id="formGroupExampleInput2" #Password="ngModel" [(ngModel)]="obj.Contrasenia" name="password" >
+          <input type="password" class="form-control " id="formGroupExampleInput2" #Password="ngModel" [(ngModel)]="objAdmin.Contrasenia" name="password" >
         </div>
         <div class="form-group text-center">
         <button class="btn btn-dark " style="font-size: 13px;" (click)="loguinAdministrador()">Ingresar</button>
@@ -92,12 +92,13 @@
 
         <div class="flex-col-c p-t-155">
 
-          <a class="txt2"  href="https://inscripcion.ebenezercolegio.edu.ec/">
+          <a class="txt2 font-weight-bold"  href="https://inscripcion.ebenezercolegio.edu.ec/">
             Matriculate
           </a>
-          <br>
-          <div id="formFooter">
+       <br>
+          <div id="formFooter ">
             &#169; 2021 por MASTER REPAIR
+            <p class="text-center">versión 1.5 </p>
           </div>
 
         </div>

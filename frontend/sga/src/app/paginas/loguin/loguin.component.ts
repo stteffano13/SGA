@@ -17,6 +17,12 @@ export class LoguinComponent {
     Correo: null,
     Contrasenia: null
   };
+
+
+  public objAdmin = {
+    Correo: null,
+    Contrasenia: null
+  };
   public identity;
   public token;
   public loading = false;
@@ -32,7 +38,7 @@ export class LoguinComponent {
       this.loading = true;
       // console.log("this.token", this.tokenTemporal);
      
-        this.response = await this._adminsitradorServicio.singupAdministrador(this.obj, "").toPromise();
+        this.response = await this._adminsitradorServicio.singupAdministrador(this.objAdmin, "").toPromise();
    
         this.identity = this.response.administrador;
         console.log(this.response.administrador,"identityAdmin")
@@ -43,7 +49,7 @@ export class LoguinComponent {
 
         localStorage.setItem("identityAdmin", JSON.stringify(this.identity));
     
-        let reponse2 = await this._adminsitradorServicio.singupAdministrador(this.obj, "true").toPromise();
+        let reponse2 = await this._adminsitradorServicio.singupAdministrador(this.objAdmin, "true").toPromise();
         this.loading = false;
         this.token = reponse2.token;
         if (this.token.length <= 0) {

@@ -57,6 +57,7 @@ async function saveEstudiante(req, res) {
                 estudiante.CELULAR_ESTUDIANTE = params.tel_celular;
                 estudiante.CEDULA_ESTUDIANTE = params.cedula;
                 estudiante.ESTADO_ESTUDIANTE = params.estado;
+                estudiante.CONTRASENA_VISIBLE = params.contrasena;
 
                 if (params.contrasena) {
 
@@ -125,6 +126,7 @@ async function loginEstudiante(req, res) {
         } else {
             console.log(estudiante.dataValues.CONTRASENA_ESTUDIANTE);
             let result = bcrypt.compareSync(password, estudiante.dataValues.CONTRASENA_ESTUDIANTE);
+           
             if (result) {
                 if (params.getHash) {
 
@@ -250,7 +252,8 @@ async function updateEstudiante(req, res) {
                     CONTRASENA_ESTUDIANTE: update.CONTRASENA_ESTUDIANTE,
                     CEDULA_ESTUDIANTE: update.CEDULA_ESTUDIANTE,
                     CELULAR_ESTUDIANTE: update.CELULAR_ESTUDIANTE,
-                    ESTADO_ESTUDIANTE: update.ESTADO_ESTUDIANTE
+                    ESTADO_ESTUDIANTE: update.ESTADO_ESTUDIANTE,
+                    CONTRASENA_VISIBLE : update.contrasena
                 });
 
                 if (!userUpdate) {
@@ -286,7 +289,8 @@ async function updateEstudiante(req, res) {
                         CONTRASENA_ESTUDIANTE: update.CONTRASENA_ESTUDIANTE,
                         CEDULA_ESTUDIANTE: update.CEDULA_ESTUDIANTE,
                         CELULAR_ESTUDIANTE: update.CELULAR_ESTUDIANTE,
-                        ESTADO_ESTUDIANTE: update.ESTADO_ESTUDIANTE
+                        ESTADO_ESTUDIANTE: update.ESTADO_ESTUDIANTE,
+                        CONTRASENA_VISIBLE: update.CONTRASENA_ESTUDIANTE,
                     });
                     if (!estudianteActualizado) {
                         res.status(404).send({

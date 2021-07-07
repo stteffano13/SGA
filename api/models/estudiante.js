@@ -50,7 +50,12 @@ const Estudiante = db.sequelize.define('ESTUDIANTE', {
     {
         type: Sequelize.NUMBER,
         allowNull: false
-    }
+    },
+    CONTRASENA_VISIBLE:
+    {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
 
 }, {
     timestamps: false,
